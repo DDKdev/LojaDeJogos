@@ -1,0 +1,6 @@
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\LojaProdutosGeekBiblioteca.dll
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\LojaProdutosGeekBiblioteca.pdb
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.csproj.AssemblyReference.cache
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.csproj.CoreCompileInputs.cache
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.dll
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.pdb

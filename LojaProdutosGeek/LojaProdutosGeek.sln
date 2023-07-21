@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaProdutosGeek", "LojaProdutosGeek\LojaProdutosGeek.csproj", "{543AD8F6-B655-4C91-910E-0EFAB22145DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaProdutosGeekBiblioteca", "LojaProdutosGeekBiblioteca\LojaProdutosGeekBiblioteca.csproj", "{7DF006F3-9622-452E-A5CF-81A9EEBFDDA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{543AD8F6-B655-4C91-910E-0EFAB22145DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{543AD8F6-B655-4C91-910E-0EFAB22145DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{543AD8F6-B655-4C91-910E-0EFAB22145DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{543AD8F6-B655-4C91-910E-0EFAB22145DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DF006F3-9622-452E-A5CF-81A9EEBFDDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF006F3-9622-452E-A5CF-81A9EEBFDDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF006F3-9622-452E-A5CF-81A9EEBFDDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF006F3-9622-452E-A5CF-81A9EEBFDDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F119A292-21CA-4327-9071-52583578A760}
+	EndGlobalSection
+EndGlobal
