@@ -46,9 +46,20 @@ namespace LojaProdutosGeek
 
         private void desconectarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            conectarToolStripMenuItem.Enabled = true;
-            desconectarToolStripMenuItem.Enabled = false;
-            abrirToolStripMenuItem.Enabled = false;
+            Frm_Questao Q = new Frm_Questao("Deseja mesmo desconectar. As abas serão fechadas!");
+            Q.ShowDialog();
+
+            if(Q.DialogResult == DialogResult.Yes)
+            {
+                for (int i = Tbc_Aplicacoes.TabPages.Count - 1; i >= 0; i += -1)
+                {
+                    ApagaAba(Tbc_Aplicacoes.TabPages[i]);
+                }
+                conectarToolStripMenuItem.Enabled = true;
+                desconectarToolStripMenuItem.Enabled = false;
+                abrirToolStripMenuItem.Enabled = false;
+            }
+
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
