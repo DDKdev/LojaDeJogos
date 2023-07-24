@@ -21,6 +21,7 @@ namespace LojaProdutosGeek
             Lbl_senha.Text = "Senha";
             Btn_Ok.Text = "Entrar";
             Btn_Cancel.Text = "Cancelar";
+            Lbl_login.Focus();
         }
 
         public string login;

@@ -37,3 +37,4 @@ C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosG
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek - Teste\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.exe
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek - Teste\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.pdb
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek - Teste\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.Frm_Questao.resources
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.Frm_Questao.resources

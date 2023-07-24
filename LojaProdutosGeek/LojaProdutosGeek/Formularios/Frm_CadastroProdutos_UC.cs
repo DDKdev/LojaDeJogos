@@ -16,5 +16,32 @@ namespace LojaProdutosGeek
         {
             InitializeComponent();
         }
+
+        private void Rd_Jogos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rd_Jogos.Checked)
+            {
+                Txt_plataforma.Enabled = true;
+                Txt_garantia.Enabled = true;
+            }
+        }
+
+        private void Rd_ProdutosGeek_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rd_ProdutosGeek.Checked)
+            {
+                Txt_plataforma.Enabled = false;
+                Txt_garantia.Enabled = false;
+            }
+        }
+
+        private void Rd_Acessorios_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rd_Acessorios.Checked)
+            {
+                Txt_plataforma.Enabled = true;
+                Txt_garantia.Enabled = true;
+            }
+        }
     }
 }

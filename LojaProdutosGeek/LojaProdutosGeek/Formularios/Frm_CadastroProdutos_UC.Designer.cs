@@ -33,74 +33,77 @@
             this.Msk_Quantidade = new System.Windows.Forms.MaskedTextBox();
             this.Msk_CodProduto = new System.Windows.Forms.MaskedTextBox();
             this.Lbl_Garantia = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_garantia = new System.Windows.Forms.TextBox();
             this.Lbl_plataforma = new System.Windows.Forms.Label();
             this.Txt_plataforma = new System.Windows.Forms.TextBox();
             this.Lbl_preco = new System.Windows.Forms.Label();
             this.Lbl_qtde = new System.Windows.Forms.Label();
             this.Lbl_fabricante = new System.Windows.Forms.Label();
             this.Txt_Fabricante = new System.Windows.Forms.TextBox();
-            this.Lbl_categoria = new System.Windows.Forms.Label();
-            this.Txt_Categoria = new System.Windows.Forms.TextBox();
             this.Lbl_CodBarra = new System.Windows.Forms.Label();
             this.Lbl_NomeProduto = new System.Windows.Forms.Label();
             this.Txt_NomeProduto = new System.Windows.Forms.TextBox();
             this.Lbl_CodProduto = new System.Windows.Forms.Label();
+            this.Grp_Categorias = new System.Windows.Forms.GroupBox();
+            this.Rd_Jogos = new System.Windows.Forms.RadioButton();
+            this.Rd_Acessorios = new System.Windows.Forms.RadioButton();
+            this.Rd_ProdutosGeek = new System.Windows.Forms.RadioButton();
+            this.Grp_Categorias.SuspendLayout();
             this.SuspendLayout();
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(245, 170);
+            this.maskedTextBox1.Location = new System.Drawing.Point(271, 153);
             this.maskedTextBox1.Mask = "000,000.00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(68, 20);
-            this.maskedTextBox1.TabIndex = 47;
+            this.maskedTextBox1.TabIndex = 8;
             // 
             // Msk_CodBarra
             // 
-            this.Msk_CodBarra.Location = new System.Drawing.Point(29, 171);
+            this.Msk_CodBarra.Location = new System.Drawing.Point(112, 153);
             this.Msk_CodBarra.Mask = "0 000000 000000";
             this.Msk_CodBarra.Name = "Msk_CodBarra";
             this.Msk_CodBarra.Size = new System.Drawing.Size(141, 20);
-            this.Msk_CodBarra.TabIndex = 46;
+            this.Msk_CodBarra.TabIndex = 7;
             // 
             // Msk_Quantidade
             // 
-            this.Msk_Quantidade.Location = new System.Drawing.Point(350, 108);
+            this.Msk_Quantidade.Location = new System.Drawing.Point(23, 153);
             this.Msk_Quantidade.Name = "Msk_Quantidade";
             this.Msk_Quantidade.Size = new System.Drawing.Size(44, 20);
-            this.Msk_Quantidade.TabIndex = 45;
+            this.Msk_Quantidade.TabIndex = 6;
             // 
             // Msk_CodProduto
             // 
-            this.Msk_CodProduto.Location = new System.Drawing.Point(29, 48);
+            this.Msk_CodProduto.Location = new System.Drawing.Point(23, 41);
             this.Msk_CodProduto.Mask = "000000";
             this.Msk_CodProduto.Name = "Msk_CodProduto";
             this.Msk_CodProduto.Size = new System.Drawing.Size(51, 20);
-            this.Msk_CodProduto.TabIndex = 44;
+            this.Msk_CodProduto.TabIndex = 1;
             // 
             // Lbl_Garantia
             // 
             this.Lbl_Garantia.AutoSize = true;
             this.Lbl_Garantia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_Garantia.Location = new System.Drawing.Point(242, 267);
+            this.Lbl_Garantia.Location = new System.Drawing.Point(25, 255);
             this.Lbl_Garantia.Name = "Lbl_Garantia";
             this.Lbl_Garantia.Size = new System.Drawing.Size(47, 13);
             this.Lbl_Garantia.TabIndex = 43;
             this.Lbl_Garantia.Text = "Garantia";
             // 
-            // textBox1
+            // Txt_garantia
             // 
-            this.textBox1.Location = new System.Drawing.Point(242, 286);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(119, 20);
-            this.textBox1.TabIndex = 42;
+            this.Txt_garantia.Location = new System.Drawing.Point(25, 274);
+            this.Txt_garantia.Name = "Txt_garantia";
+            this.Txt_garantia.Size = new System.Drawing.Size(119, 20);
+            this.Txt_garantia.TabIndex = 11;
             // 
             // Lbl_plataforma
             // 
             this.Lbl_plataforma.AutoSize = true;
             this.Lbl_plataforma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_plataforma.Location = new System.Drawing.Point(242, 209);
+            this.Lbl_plataforma.Location = new System.Drawing.Point(231, 197);
             this.Lbl_plataforma.Name = "Lbl_plataforma";
             this.Lbl_plataforma.Size = new System.Drawing.Size(57, 13);
             this.Lbl_plataforma.TabIndex = 41;
@@ -108,16 +111,16 @@
             // 
             // Txt_plataforma
             // 
-            this.Txt_plataforma.Location = new System.Drawing.Point(242, 228);
+            this.Txt_plataforma.Location = new System.Drawing.Point(231, 216);
             this.Txt_plataforma.Name = "Txt_plataforma";
             this.Txt_plataforma.Size = new System.Drawing.Size(178, 20);
-            this.Txt_plataforma.TabIndex = 40;
+            this.Txt_plataforma.TabIndex = 10;
             // 
             // Lbl_preco
             // 
             this.Lbl_preco.AutoSize = true;
             this.Lbl_preco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_preco.Location = new System.Drawing.Point(241, 147);
+            this.Lbl_preco.Location = new System.Drawing.Point(268, 135);
             this.Lbl_preco.Name = "Lbl_preco";
             this.Lbl_preco.Size = new System.Drawing.Size(35, 13);
             this.Lbl_preco.TabIndex = 39;
@@ -127,7 +130,7 @@
             // 
             this.Lbl_qtde.AutoSize = true;
             this.Lbl_qtde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_qtde.Location = new System.Drawing.Point(346, 84);
+            this.Lbl_qtde.Location = new System.Drawing.Point(20, 135);
             this.Lbl_qtde.Name = "Lbl_qtde";
             this.Lbl_qtde.Size = new System.Drawing.Size(62, 13);
             this.Lbl_qtde.TabIndex = 38;
@@ -137,7 +140,7 @@
             // 
             this.Lbl_fabricante.AutoSize = true;
             this.Lbl_fabricante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_fabricante.Location = new System.Drawing.Point(26, 267);
+            this.Lbl_fabricante.Location = new System.Drawing.Point(25, 197);
             this.Lbl_fabricante.Name = "Lbl_fabricante";
             this.Lbl_fabricante.Size = new System.Drawing.Size(57, 13);
             this.Lbl_fabricante.TabIndex = 37;
@@ -145,33 +148,16 @@
             // 
             // Txt_Fabricante
             // 
-            this.Txt_Fabricante.Location = new System.Drawing.Point(26, 286);
+            this.Txt_Fabricante.Location = new System.Drawing.Point(25, 216);
             this.Txt_Fabricante.Name = "Txt_Fabricante";
             this.Txt_Fabricante.Size = new System.Drawing.Size(173, 20);
-            this.Txt_Fabricante.TabIndex = 36;
-            // 
-            // Lbl_categoria
-            // 
-            this.Lbl_categoria.AutoSize = true;
-            this.Lbl_categoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_categoria.Location = new System.Drawing.Point(26, 209);
-            this.Lbl_categoria.Name = "Lbl_categoria";
-            this.Lbl_categoria.Size = new System.Drawing.Size(52, 13);
-            this.Lbl_categoria.TabIndex = 35;
-            this.Lbl_categoria.Text = "Categoria";
-            // 
-            // Txt_Categoria
-            // 
-            this.Txt_Categoria.Location = new System.Drawing.Point(26, 228);
-            this.Txt_Categoria.Name = "Txt_Categoria";
-            this.Txt_Categoria.Size = new System.Drawing.Size(119, 20);
-            this.Txt_Categoria.TabIndex = 34;
+            this.Txt_Fabricante.TabIndex = 9;
             // 
             // Lbl_CodBarra
             // 
             this.Lbl_CodBarra.AutoSize = true;
             this.Lbl_CodBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_CodBarra.Location = new System.Drawing.Point(26, 153);
+            this.Lbl_CodBarra.Location = new System.Drawing.Point(109, 135);
             this.Lbl_CodBarra.Name = "Lbl_CodBarra";
             this.Lbl_CodBarra.Size = new System.Drawing.Size(88, 13);
             this.Lbl_CodBarra.TabIndex = 33;
@@ -181,7 +167,7 @@
             // 
             this.Lbl_NomeProduto.AutoSize = true;
             this.Lbl_NomeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_NomeProduto.Location = new System.Drawing.Point(25, 84);
+            this.Lbl_NomeProduto.Location = new System.Drawing.Point(22, 82);
             this.Lbl_NomeProduto.Name = "Lbl_NomeProduto";
             this.Lbl_NomeProduto.Size = new System.Drawing.Size(73, 13);
             this.Lbl_NomeProduto.TabIndex = 32;
@@ -189,45 +175,94 @@
             // 
             // Txt_NomeProduto
             // 
-            this.Txt_NomeProduto.Location = new System.Drawing.Point(26, 109);
+            this.Txt_NomeProduto.Location = new System.Drawing.Point(23, 98);
             this.Txt_NomeProduto.Name = "Txt_NomeProduto";
             this.Txt_NomeProduto.Size = new System.Drawing.Size(304, 20);
-            this.Txt_NomeProduto.TabIndex = 31;
+            this.Txt_NomeProduto.TabIndex = 5;
             // 
             // Lbl_CodProduto
             // 
             this.Lbl_CodProduto.AutoSize = true;
             this.Lbl_CodProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Lbl_CodProduto.Location = new System.Drawing.Point(26, 27);
+            this.Lbl_CodProduto.Location = new System.Drawing.Point(20, 20);
             this.Lbl_CodProduto.Name = "Lbl_CodProduto";
             this.Lbl_CodProduto.Size = new System.Drawing.Size(95, 13);
             this.Lbl_CodProduto.TabIndex = 30;
             this.Lbl_CodProduto.Text = "Código do Produto";
             // 
+            // Grp_Categorias
+            // 
+            this.Grp_Categorias.Controls.Add(this.Rd_ProdutosGeek);
+            this.Grp_Categorias.Controls.Add(this.Rd_Acessorios);
+            this.Grp_Categorias.Controls.Add(this.Rd_Jogos);
+            this.Grp_Categorias.Location = new System.Drawing.Point(139, 20);
+            this.Grp_Categorias.Name = "Grp_Categorias";
+            this.Grp_Categorias.Size = new System.Drawing.Size(270, 56);
+            this.Grp_Categorias.TabIndex = 2;
+            this.Grp_Categorias.TabStop = false;
+            this.Grp_Categorias.Text = "Categorias";
+            // 
+            // Rd_Jogos
+            // 
+            this.Rd_Jogos.AutoSize = true;
+            this.Rd_Jogos.Location = new System.Drawing.Point(14, 25);
+            this.Rd_Jogos.Name = "Rd_Jogos";
+            this.Rd_Jogos.Size = new System.Drawing.Size(53, 17);
+            this.Rd_Jogos.TabIndex = 2;
+            this.Rd_Jogos.TabStop = true;
+            this.Rd_Jogos.Text = "Jogos";
+            this.Rd_Jogos.UseVisualStyleBackColor = true;
+            this.Rd_Jogos.CheckedChanged += new System.EventHandler(this.Rd_Jogos_CheckedChanged);
+            // 
+            // Rd_Acessorios
+            // 
+            this.Rd_Acessorios.AutoSize = true;
+            this.Rd_Acessorios.Location = new System.Drawing.Point(73, 25);
+            this.Rd_Acessorios.Name = "Rd_Acessorios";
+            this.Rd_Acessorios.Size = new System.Drawing.Size(76, 17);
+            this.Rd_Acessorios.TabIndex = 3;
+            this.Rd_Acessorios.TabStop = true;
+            this.Rd_Acessorios.Text = "Acessórios";
+            this.Rd_Acessorios.UseVisualStyleBackColor = true;
+            this.Rd_Acessorios.CheckedChanged += new System.EventHandler(this.Rd_Acessorios_CheckedChanged);
+            // 
+            // Rd_ProdutosGeek
+            // 
+            this.Rd_ProdutosGeek.AutoSize = true;
+            this.Rd_ProdutosGeek.Location = new System.Drawing.Point(155, 25);
+            this.Rd_ProdutosGeek.Name = "Rd_ProdutosGeek";
+            this.Rd_ProdutosGeek.Size = new System.Drawing.Size(96, 17);
+            this.Rd_ProdutosGeek.TabIndex = 4;
+            this.Rd_ProdutosGeek.TabStop = true;
+            this.Rd_ProdutosGeek.Text = "Produtos Geek";
+            this.Rd_ProdutosGeek.UseVisualStyleBackColor = true;
+            this.Rd_ProdutosGeek.CheckedChanged += new System.EventHandler(this.Rd_ProdutosGeek_CheckedChanged);
+            // 
             // Frm_CadastroProdutos_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Grp_Categorias);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.Msk_CodBarra);
             this.Controls.Add(this.Msk_Quantidade);
             this.Controls.Add(this.Msk_CodProduto);
             this.Controls.Add(this.Lbl_Garantia);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Txt_garantia);
             this.Controls.Add(this.Lbl_plataforma);
             this.Controls.Add(this.Txt_plataforma);
             this.Controls.Add(this.Lbl_preco);
             this.Controls.Add(this.Lbl_qtde);
             this.Controls.Add(this.Lbl_fabricante);
             this.Controls.Add(this.Txt_Fabricante);
-            this.Controls.Add(this.Lbl_categoria);
-            this.Controls.Add(this.Txt_Categoria);
             this.Controls.Add(this.Lbl_CodBarra);
             this.Controls.Add(this.Lbl_NomeProduto);
             this.Controls.Add(this.Txt_NomeProduto);
             this.Controls.Add(this.Lbl_CodProduto);
             this.Name = "Frm_CadastroProdutos_UC";
-            this.Size = new System.Drawing.Size(449, 326);
+            this.Size = new System.Drawing.Size(443, 316);
+            this.Grp_Categorias.ResumeLayout(false);
+            this.Grp_Categorias.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,18 +275,20 @@
         private System.Windows.Forms.MaskedTextBox Msk_Quantidade;
         private System.Windows.Forms.MaskedTextBox Msk_CodProduto;
         private System.Windows.Forms.Label Lbl_Garantia;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txt_garantia;
         private System.Windows.Forms.Label Lbl_plataforma;
         private System.Windows.Forms.TextBox Txt_plataforma;
         private System.Windows.Forms.Label Lbl_preco;
         private System.Windows.Forms.Label Lbl_qtde;
         private System.Windows.Forms.Label Lbl_fabricante;
         private System.Windows.Forms.TextBox Txt_Fabricante;
-        private System.Windows.Forms.Label Lbl_categoria;
-        private System.Windows.Forms.TextBox Txt_Categoria;
         private System.Windows.Forms.Label Lbl_CodBarra;
         private System.Windows.Forms.Label Lbl_NomeProduto;
         private System.Windows.Forms.TextBox Txt_NomeProduto;
         private System.Windows.Forms.Label Lbl_CodProduto;
+        private System.Windows.Forms.GroupBox Grp_Categorias;
+        private System.Windows.Forms.RadioButton Rd_ProdutosGeek;
+        private System.Windows.Forms.RadioButton Rd_Acessorios;
+        private System.Windows.Forms.RadioButton Rd_Jogos;
     }
 }
