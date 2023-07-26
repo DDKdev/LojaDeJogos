@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LojaProdutosGeekBiblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -44,6 +46,50 @@ namespace LojaProdutosGeek
             Cmb_Estados.Items.Add("São Paulo(SP)");
             Cmb_Estados.Items.Add("Sergipe(SE)");
             Cmb_Estados.Items.Add("Tocantins(TO)");
+
+            Tls_Principal_Cliente.Items[0].ToolTipText = "Salvar o Cliente no banco de Dados";
+            Tls_Principal_Cliente.Items[1].ToolTipText = "Buscar o Cliente na base";
+            Tls_Principal_Cliente.Items[2].ToolTipText = "Alterar dados do Cliente";
+            Tls_Principal_Cliente.Items[3].ToolTipText = "Limpar formulário";
+            Tls_Principal_Cliente.Items[4].ToolTipText = "Excluir Cliente do Banco de Dados";
+        }
+
+        private void SalvarToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cliente.Unit C = new Cliente.Unit();
+                C.IdCliente = Msk_IdCliente.Text;
+                C.ValidaClasseCliente();
+                MessageBox.Show("Cliente cadastrado com Sucesso!", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(ValidationException Ex)
+            {
+                MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AbrirToolStripButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cliquei no botão Abrir");
+
+        }
+
+        private void AlterarToolStripButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cliquei no botão Alterar");
+
+        }
+
+        private void LimparToolStripButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cliquei no botão Limpar");
+
+        }
+
+        private void ExcluirToolStripButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
