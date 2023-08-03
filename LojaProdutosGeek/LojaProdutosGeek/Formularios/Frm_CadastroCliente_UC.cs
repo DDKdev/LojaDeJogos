@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using LojaProdutosGeekBiblioteca.Classes;
 
 namespace LojaProdutosGeek
 {
@@ -59,13 +61,19 @@ namespace LojaProdutosGeek
             try
             {
                 Cliente.Unit C = new Cliente.Unit();
-                C.IdCliente = Msk_IdCliente.Text;
+                C = LerFormulario();
+                C.ValidaCPF();
                 C.ValidaClasseCliente();
                 MessageBox.Show("Cliente cadastrado com Sucesso!", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(ValidationException Ex)
             {
                 MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -89,7 +97,77 @@ namespace LojaProdutosGeek
 
         private void ExcluirToolStripButton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Cliquei no botão Excluir");
 
+        }
+        Cliente.Unit LerFormulario()
+        {
+            Cliente.Unit C = new Cliente.Unit();
+            C.IdCliente = Msk_IdCliente.Text;
+            C.NomeCliente = Txt_NomeCliente.Text;
+            C.DtCadastro = Msk_DtCadastro.Text;
+            C.Rg = Txt_Rg.Text;
+            C.Cpf = Msk_Cpf.Text;
+            C.Telefone = Msk_Telefone.Text;
+            C.Cep = Msk_Cep.Text;
+            C.Rua = Txt_Rua.Text;
+            C.Numero = Txt_Numero.Text;
+            C.Complemento = Txt_Complemento.Text;
+            C.Bairro = Txt_Bairro.Text;
+            C.Cidade = Txt_Cidade.Text;
+            
+            if (Rd_masculino.Checked)
+            {
+                C.Genero = 0;
+            }
+            if (Rd_Feminino.Checked)
+            {
+                C.Genero = 1;
+            }
+            if (Rd_Indefinido.Checked)
+            {
+                C.Genero = 2;
+            }
+
+            if (Cmb_Estados.SelectedIndex < 0)
+            {
+                C.Estado = "";
+            }
+            else
+            {
+                C.Estado = Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString();
+            }
+
+            return C;
+
+        }
+
+        private void Msk_Cep_MouseLeave(object sender, EventArgs e)
+        {
+            string vCep = Msk_Cep.Text;
+            vCep = vCep.Replace("-", "");
+            if (vCep != "")
+            {
+                if(Msk_Cep.Text.Length >= 8)
+                {
+                    var vJson = Cls_Uteis.GeraJSONCEP(vCep);
+                    Cep.Unit CEP = new Cep.Unit();
+                    CEP = Cep.Desserializar(vJson);
+                    Txt_Rua.Text = CEP.logradouro;
+                    Txt_Bairro.Text = CEP.bairro;
+                    Txt_Cidade.Text = CEP.localidade;
+
+                    Cmb_Estados.SelectedIndex = -1;
+                    for (int i = 0; i < Cmb_Estados.Items.Count - 1; i++)
+                    {
+                        var vPos = Strings.InStr(Cmb_Estados.Items[i].ToString(), "(" + CEP.uf + ')');
+                        if (vPos > 0)
+                        {
+                            Cmb_Estados.SelectedIndex = i;
+                        }
+                    }
+                }
+            }
         }
     }
 }

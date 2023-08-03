@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CadastroCliente_UC));
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_Cidade = new System.Windows.Forms.TextBox();
+            this.Txt_Bairro = new System.Windows.Forms.TextBox();
+            this.Txt_Complemento = new System.Windows.Forms.TextBox();
             this.Txt_Numero = new System.Windows.Forms.TextBox();
             this.Msk_Cep = new System.Windows.Forms.MaskedTextBox();
             this.Txt_Rua = new System.Windows.Forms.TextBox();
@@ -76,26 +76,26 @@
             this.Tls_Principal_Cliente.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox3
+            // Txt_Cidade
             // 
-            this.textBox3.Location = new System.Drawing.Point(312, 88);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 20);
-            this.textBox3.TabIndex = 15;
+            this.Txt_Cidade.Location = new System.Drawing.Point(312, 88);
+            this.Txt_Cidade.Name = "Txt_Cidade";
+            this.Txt_Cidade.Size = new System.Drawing.Size(136, 20);
+            this.Txt_Cidade.TabIndex = 15;
             // 
-            // textBox2
+            // Txt_Bairro
             // 
-            this.textBox2.Location = new System.Drawing.Point(160, 88);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 20);
-            this.textBox2.TabIndex = 14;
+            this.Txt_Bairro.Location = new System.Drawing.Point(160, 88);
+            this.Txt_Bairro.Name = "Txt_Bairro";
+            this.Txt_Bairro.Size = new System.Drawing.Size(143, 20);
+            this.Txt_Bairro.TabIndex = 14;
             // 
-            // textBox1
+            // Txt_Complemento
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 88);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 20);
-            this.textBox1.TabIndex = 13;
+            this.Txt_Complemento.Location = new System.Drawing.Point(15, 88);
+            this.Txt_Complemento.Name = "Txt_Complemento";
+            this.Txt_Complemento.Size = new System.Drawing.Size(130, 20);
+            this.Txt_Complemento.TabIndex = 13;
             // 
             // Txt_Numero
             // 
@@ -111,6 +111,7 @@
             this.Msk_Cep.Name = "Msk_Cep";
             this.Msk_Cep.Size = new System.Drawing.Size(64, 20);
             this.Msk_Cep.TabIndex = 10;
+            this.Msk_Cep.MouseLeave += new System.EventHandler(this.Msk_Cep_MouseLeave);
             // 
             // Txt_Rua
             // 
@@ -122,7 +123,7 @@
             // Msk_Telefone
             // 
             this.Msk_Telefone.Location = new System.Drawing.Point(269, 83);
-            this.Msk_Telefone.Mask = "(00) 0 0000 0000";
+            this.Msk_Telefone.Mask = "(00)000000000";
             this.Msk_Telefone.Name = "Msk_Telefone";
             this.Msk_Telefone.Size = new System.Drawing.Size(108, 20);
             this.Msk_Telefone.TabIndex = 6;
@@ -152,7 +153,7 @@
             // Msk_DtCadastro
             // 
             this.Msk_DtCadastro.Location = new System.Drawing.Point(138, 43);
-            this.Msk_DtCadastro.Mask = "00/00/00";
+            this.Msk_DtCadastro.Mask = "00/00/0000";
             this.Msk_DtCadastro.Name = "Msk_DtCadastro";
             this.Msk_DtCadastro.Size = new System.Drawing.Size(67, 20);
             this.Msk_DtCadastro.TabIndex = 2;
@@ -374,15 +375,15 @@
             this.Grp_Endereco.Controls.Add(this.Lbl_Complemento);
             this.Grp_Endereco.Controls.Add(this.Lbl_Rua);
             this.Grp_Endereco.Controls.Add(this.Msk_Cep);
-            this.Grp_Endereco.Controls.Add(this.textBox1);
+            this.Grp_Endereco.Controls.Add(this.Txt_Complemento);
             this.Grp_Endereco.Controls.Add(this.Txt_Rua);
             this.Grp_Endereco.Controls.Add(this.Lbl_Bairro);
             this.Grp_Endereco.Controls.Add(this.Lbl_Estado);
             this.Grp_Endereco.Controls.Add(this.Txt_Numero);
-            this.Grp_Endereco.Controls.Add(this.textBox3);
+            this.Grp_Endereco.Controls.Add(this.Txt_Cidade);
             this.Grp_Endereco.Controls.Add(this.Lbl_Cidade);
             this.Grp_Endereco.Controls.Add(this.Lbl_Numero);
-            this.Grp_Endereco.Controls.Add(this.textBox2);
+            this.Grp_Endereco.Controls.Add(this.Txt_Bairro);
             this.Grp_Endereco.Location = new System.Drawing.Point(12, 258);
             this.Grp_Endereco.Name = "Grp_Endereco";
             this.Grp_Endereco.Size = new System.Drawing.Size(644, 119);
@@ -489,9 +490,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txt_Cidade;
+        private System.Windows.Forms.TextBox Txt_Bairro;
+        private System.Windows.Forms.TextBox Txt_Complemento;
         private System.Windows.Forms.TextBox Txt_Numero;
         private System.Windows.Forms.MaskedTextBox Msk_Cep;
         private System.Windows.Forms.TextBox Txt_Rua;

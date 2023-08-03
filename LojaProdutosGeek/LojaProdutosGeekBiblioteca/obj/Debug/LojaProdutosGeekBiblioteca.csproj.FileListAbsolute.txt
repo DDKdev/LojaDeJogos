@@ -4,3 +4,6 @@ C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosG
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.csproj.CoreCompileInputs.cache
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.dll
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.pdb
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\Newtonsoft.Json.xml
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.csproj.CopyComplete
