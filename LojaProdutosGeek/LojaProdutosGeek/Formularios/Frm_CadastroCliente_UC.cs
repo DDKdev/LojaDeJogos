@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using LojaProdutosGeekBiblioteca.Classes;
+using LojaProdutosGeekBiblioteca.DataBases;
 
 namespace LojaProdutosGeek
 {
@@ -64,7 +65,22 @@ namespace LojaProdutosGeek
                 C = LerFormulario();
                 C.ValidaCPF();
                 C.ValidaClasseCliente();
-                MessageBox.Show("Cliente cadastrado com Sucesso!", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                string clienteJson = Cliente.Serializar(C);
+
+                FicharioCliente F = new FicharioCliente("C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioCliente");
+                if (F.status)
+                {
+                    F.Incluir(C.IdCliente, clienteJson);
+                    if (F.status)
+                    {
+                        MessageBox.Show("OK: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Err: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             catch(ValidationException Ex)
             {
@@ -91,8 +107,7 @@ namespace LojaProdutosGeek
 
         private void LimparToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Limpar");
-
+            LimparFormulario();
         }
 
         private void ExcluirToolStripButton_Click(object sender, EventArgs e)
@@ -168,6 +183,27 @@ namespace LojaProdutosGeek
                     }
                 }
             }
+        }
+
+        private void LimparFormulario()
+        {
+            Msk_IdCliente.Text = "";
+            Msk_DtCadastro.Text = "";
+            Txt_NomeCliente.Text = "";
+            Msk_Cpf.Text = "";
+            Txt_Rg.Text = "";
+            Msk_Telefone.Text = "";
+            Rd_Feminino.Checked = false;
+            Rd_masculino.Checked = false;
+            Rd_Indefinido.Checked = false;
+            Txt_Rua.Text = "";
+            Msk_Cep.Text = "";
+            Txt_Cidade.Text = "";
+            Txt_Bairro.Text = "";
+            Txt_Rua.Text = "";
+            Txt_Numero.Text = "";
+            Txt_Complemento.Text = "";
+            Cmb_Estados.SelectedIndex = -1;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,13 +12,32 @@ namespace LojaProdutosGeekBiblioteca
     {
         public class Unit
         {
-            [Required(ErrorMessage = "O código do Produto é obrigatório")]
+            [Required(ErrorMessage = "Código do Produto é obrigatório.")]
+            [RegularExpression("([0-9]+)", ErrorMessage = "Código do Produto somente aceita valores numéricos.")]
+            [StringLength(5, MinimumLength = 5, ErrorMessage = "Código do Produto deve ter 5 dígitos.")]
             public string IdProduto { get; set; }
+
+            [Required(ErrorMessage = "Nome do produto é obrigatório.")]
+            [StringLength(50, ErrorMessage = "Nome do produto deve ter no máximo 50 caracteres.")]
             public string NomeProduto { get; set; }
-            public string Categoria { get; set; }
-            public int Quantidade { get; set; }
+
+            [Required(ErrorMessage = "Selecionar categoria é obrigatório.")]
+            public int Categoria { get; set; }
+
+            [Required(ErrorMessage = "Campo quantidade é obrigatório.")]
+            [RegularExpression("([0-9]+)", ErrorMessage = "Campo quantidade somente aceita valores numéricos.")]
+            public string Quantidade { get; set; }
+
+            [Required(ErrorMessage = "Código de Barras é obrigatório.")]
+            [StringLength(15, MinimumLength = 15, ErrorMessage = "Código de Barras deve ter 15 caracteres.")]
             public string CodigoBarra { get; set; }
-            public int Preco { get; set; }
+
+            [Required(ErrorMessage = "Preço é obrigatória.")]
+            [Range(0, double.MaxValue, ErrorMessage = "Preço deve ser um valor positivo.")]
+            public Double Preco { get; set; }
+
+            [Required(ErrorMessage = "Nome do Fabricante é obrigatório.")]
+            [StringLength(50, ErrorMessage = "Nome do Fabricante deve ter no máximo 50 caracteres.")]
             public string Fabricante { get; set; }
 
             //Criar uma subclasse ou superclasse para depois adicionar
@@ -45,6 +65,16 @@ namespace LojaProdutosGeekBiblioteca
         public class List
         {
             public List<Unit> ListUnit { get; set; }
+        }
+
+        public static Unit Desserializar(string vJson)
+        {
+            return JsonConvert.DeserializeObject<Unit>(vJson);
+        }
+
+        public static string Serializar(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
         }
     }
 }

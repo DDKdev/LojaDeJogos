@@ -26,5 +26,10 @@ namespace LojaProdutosGeekBiblioteca.Classes
         {
             return JsonConvert.DeserializeObject<Unit>(vJson);
         }
+
+        public static string Serializar(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
+        }
     }
 }

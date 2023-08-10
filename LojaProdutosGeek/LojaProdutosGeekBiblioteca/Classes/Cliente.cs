@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using LojaProdutosGeekBiblioteca.Classes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace LojaProdutosGeekBiblioteca
 {
@@ -102,6 +104,16 @@ namespace LojaProdutosGeekBiblioteca
         public class List
         {
             public List<Unit> LIstUnit { get; set; }
+        }
+
+        public static Unit Desserializar(string vJson)
+        {
+            return JsonConvert.DeserializeObject<Unit>(vJson);
+        }
+
+        public static string Serializar(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
         }
     }
 }

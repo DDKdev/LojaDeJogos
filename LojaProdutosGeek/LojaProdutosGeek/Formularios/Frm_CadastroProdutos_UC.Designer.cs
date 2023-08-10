@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CadastroProdutos_UC));
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.Msk_CodBarra = new System.Windows.Forms.MaskedTextBox();
-            this.Msk_Quantidade = new System.Windows.Forms.MaskedTextBox();
             this.Msk_CodProduto = new System.Windows.Forms.MaskedTextBox();
             this.Lbl_Garantia = new System.Windows.Forms.Label();
             this.Txt_garantia = new System.Windows.Forms.TextBox();
@@ -55,37 +52,17 @@
             this.AlterarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.LimparToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ExcluirToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.Txt_Quantidade = new System.Windows.Forms.TextBox();
+            this.Txt_CodBarra = new System.Windows.Forms.TextBox();
+            this.Txt_preco = new System.Windows.Forms.TextBox();
             this.Grp_Categorias.SuspendLayout();
             this.Tls_Principal_Produtos.SuspendLayout();
             this.SuspendLayout();
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(267, 183);
-            this.maskedTextBox1.Mask = "000,000.00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(68, 20);
-            this.maskedTextBox1.TabIndex = 8;
-            // 
-            // Msk_CodBarra
-            // 
-            this.Msk_CodBarra.Location = new System.Drawing.Point(108, 183);
-            this.Msk_CodBarra.Mask = "0 000000 000000";
-            this.Msk_CodBarra.Name = "Msk_CodBarra";
-            this.Msk_CodBarra.Size = new System.Drawing.Size(141, 20);
-            this.Msk_CodBarra.TabIndex = 7;
-            // 
-            // Msk_Quantidade
-            // 
-            this.Msk_Quantidade.Location = new System.Drawing.Point(19, 183);
-            this.Msk_Quantidade.Name = "Msk_Quantidade";
-            this.Msk_Quantidade.Size = new System.Drawing.Size(44, 20);
-            this.Msk_Quantidade.TabIndex = 6;
-            // 
             // Msk_CodProduto
             // 
             this.Msk_CodProduto.Location = new System.Drawing.Point(19, 71);
-            this.Msk_CodProduto.Mask = "000000";
+            this.Msk_CodProduto.Mask = "00000";
             this.Msk_CodProduto.Name = "Msk_CodProduto";
             this.Msk_CodProduto.Size = new System.Drawing.Size(51, 20);
             this.Msk_CodProduto.TabIndex = 1;
@@ -177,9 +154,9 @@
             this.Lbl_NomeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Lbl_NomeProduto.Location = new System.Drawing.Point(18, 112);
             this.Lbl_NomeProduto.Name = "Lbl_NomeProduto";
-            this.Lbl_NomeProduto.Size = new System.Drawing.Size(73, 13);
+            this.Lbl_NomeProduto.Size = new System.Drawing.Size(90, 13);
             this.Lbl_NomeProduto.TabIndex = 32;
-            this.Lbl_NomeProduto.Text = "Nome do jogo";
+            this.Lbl_NomeProduto.Text = "Nome do Produto";
             // 
             // Txt_NomeProduto
             // 
@@ -310,15 +287,36 @@
             this.ExcluirToolStripButton.Text = "toolStripButton2";
             this.ExcluirToolStripButton.Click += new System.EventHandler(this.ExcluirToolStripButton_Click);
             // 
+            // Txt_Quantidade
+            // 
+            this.Txt_Quantidade.Location = new System.Drawing.Point(19, 181);
+            this.Txt_Quantidade.Name = "Txt_Quantidade";
+            this.Txt_Quantidade.Size = new System.Drawing.Size(49, 20);
+            this.Txt_Quantidade.TabIndex = 45;
+            // 
+            // Txt_CodBarra
+            // 
+            this.Txt_CodBarra.Location = new System.Drawing.Point(106, 181);
+            this.Txt_CodBarra.Name = "Txt_CodBarra";
+            this.Txt_CodBarra.Size = new System.Drawing.Size(105, 20);
+            this.Txt_CodBarra.TabIndex = 46;
+            // 
+            // Txt_preco
+            // 
+            this.Txt_preco.Location = new System.Drawing.Point(267, 181);
+            this.Txt_preco.Name = "Txt_preco";
+            this.Txt_preco.Size = new System.Drawing.Size(49, 20);
+            this.Txt_preco.TabIndex = 47;
+            // 
             // Frm_CadastroProdutos_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Txt_preco);
+            this.Controls.Add(this.Txt_CodBarra);
+            this.Controls.Add(this.Txt_Quantidade);
             this.Controls.Add(this.Tls_Principal_Produtos);
             this.Controls.Add(this.Grp_Categorias);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.Msk_CodBarra);
-            this.Controls.Add(this.Msk_Quantidade);
             this.Controls.Add(this.Msk_CodProduto);
             this.Controls.Add(this.Lbl_Garantia);
             this.Controls.Add(this.Txt_garantia);
@@ -344,10 +342,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox Msk_CodBarra;
-        private System.Windows.Forms.MaskedTextBox Msk_Quantidade;
         private System.Windows.Forms.MaskedTextBox Msk_CodProduto;
         private System.Windows.Forms.Label Lbl_Garantia;
         private System.Windows.Forms.TextBox Txt_garantia;
@@ -371,5 +365,8 @@
         private System.Windows.Forms.ToolStripButton AlterarToolStripButton;
         private System.Windows.Forms.ToolStripButton LimparToolStripButton;
         private System.Windows.Forms.ToolStripButton ExcluirToolStripButton;
+        private System.Windows.Forms.TextBox Txt_Quantidade;
+        private System.Windows.Forms.TextBox Txt_CodBarra;
+        private System.Windows.Forms.TextBox Txt_preco;
     }
 }
