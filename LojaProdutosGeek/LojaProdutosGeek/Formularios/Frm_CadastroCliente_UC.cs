@@ -17,6 +17,7 @@ namespace LojaProdutosGeek
 {
     public partial class Frm_CadastroCliente_UC : UserControl
     {
+        public string caminho = "C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\Fichario";
         public Frm_CadastroCliente_UC()
         {
             InitializeComponent();
@@ -68,7 +69,7 @@ namespace LojaProdutosGeek
 
                 string clienteJson = Cliente.Serializar(C);
 
-                FicharioCliente F = new FicharioCliente("C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioCliente");
+                FicharioCliente F = new FicharioCliente(caminho);
                 if (F.status)
                 {
                     F.Incluir(C.IdCliente, clienteJson);
@@ -95,13 +96,66 @@ namespace LojaProdutosGeek
 
         private void AbrirToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Abrir");
+            if (Msk_IdCliente.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FicharioCliente F = new FicharioCliente(caminho);
+                string clienteJson = F.Buscar(Msk_IdCliente.Text);
+
+                Cliente.Unit C = new Cliente.Unit();
+                C = Cliente.Desserializar(clienteJson);
+                EscreverFormulario(C);
+            }
 
         }
 
         private void AlterarToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Alterar");
+            if (Msk_IdCliente.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = LerFormulario();
+                    C.ValidaClasseCliente();
+                    C.ValidaCPF();
+                    string clienteJson = Cliente.Serializar(C);
+                    FicharioCliente F = new FicharioCliente(caminho);
+                    if (F.status)
+                    {
+                        F.Alterar(C.IdCliente, clienteJson);
+                        if (F.status)
+                        {
+                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                catch (ValidationException Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
@@ -112,7 +166,42 @@ namespace LojaProdutosGeek
 
         private void ExcluirToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Excluir");
+            if (Msk_IdCliente.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FicharioCliente F = new FicharioCliente(caminho);
+                if (F.status)
+                {
+                    string clienteJson = F.Buscar(Msk_IdCliente.Text);
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = Cliente.Desserializar(clienteJson);
+                    EscreverFormulario(C);
+
+                    //Frm_Questao Db = new Frm_Questao("icons8_question_mark_961", "Deseja realmente excluir?");
+                    //Db.ShowDialog();
+                    //if (Db.DialogResult == DialogResult.Yes)
+                    if (MessageBox.Show("Deseja mesmo Excluir?", "geek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        F.Apagar(Msk_IdCliente.Text);
+                        if (F.status)
+                        {
+                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparFormulario();
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
         }
         Cliente.Unit LerFormulario()
@@ -171,6 +260,8 @@ namespace LojaProdutosGeek
                     Txt_Rua.Text = CEP.logradouro;
                     Txt_Bairro.Text = CEP.bairro;
                     Txt_Cidade.Text = CEP.localidade;
+                    Txt_Numero.Text = "";
+                    Txt_Complemento.Text = "";
 
                     Cmb_Estados.SelectedIndex = -1;
                     for (int i = 0; i < Cmb_Estados.Items.Count - 1; i++)
@@ -180,6 +271,49 @@ namespace LojaProdutosGeek
                         {
                             Cmb_Estados.SelectedIndex = i;
                         }
+                    }
+                }
+            }
+        }
+        void EscreverFormulario(Cliente.Unit C)
+        {
+            Msk_IdCliente.Text = C.IdCliente;
+            Msk_DtCadastro.Text = C.DtCadastro;
+            Txt_NomeCliente.Text = C.NomeCliente;
+            Msk_Cpf.Text = C.Cpf;
+            Txt_Rg.Text = C.Rg;
+            Msk_Telefone.Text = C.Telefone;
+            Msk_Cep.Text = C.Cep;
+            Txt_Rua.Text = C.Rua;
+            Txt_Numero.Text = C.Numero;
+            Txt_Complemento.Text = C.Complemento;
+            Txt_Bairro.Text = C.Bairro;
+            Txt_Cidade.Text = C.Cidade;
+            
+            if (C.Genero == 1)
+            {
+                Rd_masculino.Checked = true;
+            }
+            if (C.Genero == 2)
+            {
+               Rd_Feminino.Checked = true;
+            }
+            if (C.Genero == 3)
+            {
+                Rd_Indefinido.Checked = true;
+            }
+            
+            if (C.Estado == "")
+            {
+                Cmb_Estados.SelectedIndex = -1;
+            }
+            else
+            {
+                for (int i = 0; i <= Cmb_Estados.Items.Count - 1; i++)
+                {
+                    if (C.Estado == Cmb_Estados.Items[i].ToString())
+                    {
+                        Cmb_Estados.SelectedIndex = i;
                     }
                 }
             }

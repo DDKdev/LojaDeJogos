@@ -55,5 +55,77 @@ namespace LojaProdutosGeekBiblioteca.DataBases
                 mensagem = "Conexão como Fichário Produto FALHOU" + ex.Message;
             }
         }
+        public void Apagar(string Id)
+        {
+            status = true;
+            try
+            {
+                if (!(File.Exists(diretorio + "\\" + Id + ".json")))
+                {
+                    status = false;
+                    mensagem = "Identificador não encontrado " + Id;
+                }
+                else
+                {
+                    File.Delete(diretorio + "\\" + Id + ".json");
+                    status = true;
+                    mensagem = "Exclusão efetuada com sucesso. " + Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                mensagem = "não foi possível encontrar o Identificador " + ex.Message;
+            }
+        }
+        public void Alterar(string Id, string jsonUnit)
+        {
+            status = true;
+            try
+            {
+                if (!(File.Exists(diretorio + "\\" + Id + ".json")))
+                {
+                    status = false;
+                    mensagem = "Alteração não permitida, pois o Identificador não foi encontrado " + Id;
+                }
+                else
+                {
+                    File.Delete(diretorio + "\\" + Id + ".json");
+                    File.WriteAllText(diretorio + "\\" + Id + ".json", jsonUnit);
+                    status = true;
+                    mensagem = "Alteração efetuada com sucesso. Identificador: " + Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                mensagem = "não foi possível encontrar o Identificador " + ex.Message;
+            }
+        }
+        public string Buscar(string Id)
+        {
+            status = true;
+            try
+            {
+                if (!(File.Exists(diretorio + "\\" + Id + ".json")))
+                {
+                    status = false;
+                    mensagem = "O Id procurado não existe. " + Id;
+                }
+                else
+                {
+                    string conteudo = File.ReadAllText(diretorio + "\\" + Id + ".json");
+                    status = true;
+                    mensagem = "Conteúdo encontrado.";
+                    return conteudo;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                mensagem = "Não foi possível localizar o Id informado. " + ex.Message;
+            }
+            return "";
+        }
     }
 }

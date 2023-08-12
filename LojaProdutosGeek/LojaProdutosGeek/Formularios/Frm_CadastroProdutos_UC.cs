@@ -16,6 +16,7 @@ namespace LojaProdutosGeek
 {
     public partial class Frm_CadastroProdutos_UC : UserControl
     {
+        public string caminho = "C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioProduto";
         public Frm_CadastroProdutos_UC()
         {
             InitializeComponent();
@@ -64,7 +65,7 @@ namespace LojaProdutosGeek
                 P.ValidaClasseProduto();
                 string produtoJson = Produto.Serializar(P);
 
-                FicharioProduto F = new FicharioProduto("C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioProduto");
+                FicharioProduto F = new FicharioProduto(caminho);
                 if (F.status)
                 {
                     F.Incluir(P.IdProduto, produtoJson);
@@ -86,12 +87,65 @@ namespace LojaProdutosGeek
 
         private void AbrirToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Abrir");
+            if (Msk_CodProduto.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FicharioProduto F = new FicharioProduto(caminho);
+                string produtoJson = F.Buscar(Msk_CodProduto.Text);
+
+                Produto.Unit P = new Produto.Unit();
+                P = Produto.Desserializar(produtoJson);
+                EscreverFormulario(P);
+            }
         }
 
         private void AlterarToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Alterar");
+            if (Msk_CodProduto.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+
+                    Produto.Unit P = new Produto.Unit();
+                    P = LerFormulario();
+                    P.ValidaClasseProduto();
+                   
+                    string produtoJson = Produto.Serializar(P);
+                    FicharioProduto F = new FicharioProduto(caminho);
+                    if (F.status)
+                    {
+                        F.Alterar(P.IdProduto, produtoJson);
+                        if (F.status)
+                        {
+                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                catch (ValidationException Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void LimparToolStripButton_Click(object sender, EventArgs e)
@@ -101,7 +155,41 @@ namespace LojaProdutosGeek
 
         private void ExcluirToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cliquei no botão Excluir");
+            if(Msk_CodProduto.Text == "")
+            {
+                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FicharioProduto F = new FicharioProduto("C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioProduto");
+                if (F.status)
+                {
+                    string produtoJson = F.Buscar(Msk_CodProduto.Text);
+                    Produto.Unit P = new Produto.Unit();
+                    P = Produto.Desserializar(produtoJson);
+                    EscreverFormulario(P);
+
+                    //Frm_questão
+                    
+                    if (MessageBox.Show("Deseja mesmo Excluir?", "geek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        F.Apagar(Msk_CodProduto.Text);
+                        if (F.status)
+                        {
+                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparFormulario();
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         Produto.Unit LerFormulario()
@@ -161,6 +249,30 @@ namespace LojaProdutosGeek
             Rd_Acessorios.Checked = false;
             Rd_Jogos.Checked = false;
             Rd_ProdutosGeek.Checked = false;
+        }
+        void EscreverFormulario(Produto.Unit P)
+        {
+            Msk_CodProduto.Text = P.IdProduto;
+            Txt_NomeProduto.Text = P.NomeProduto;
+            Txt_Quantidade.Text = P.Quantidade;
+            Txt_preco.Text = P.Preco.ToString();
+            Txt_CodBarra.Text = P.CodigoBarra;
+            Txt_Fabricante.Text = P.Fabricante;
+            Txt_plataforma.Text = P.Plataforma;
+            Txt_garantia.Text = P.Garantia;
+            
+            if (P.Categoria == 1)
+            {
+                Rd_Jogos.Checked = true;
+            }
+            if (P.Categoria == 2)
+            {
+                Rd_Acessorios.Checked = true;
+            }
+            if (P.Categoria == 3)
+            {
+                Rd_ProdutosGeek.Checked = true;
+            }
         }
     }
 }
