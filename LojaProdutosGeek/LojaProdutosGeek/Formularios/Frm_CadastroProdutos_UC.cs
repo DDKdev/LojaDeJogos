@@ -274,5 +274,42 @@ namespace LojaProdutosGeek
                 Rd_ProdutosGeek.Checked = true;
             }
         }
+
+        private void Btn_BuscarProduto_Click(object sender, EventArgs e)
+        {
+            FicharioProduto FP = new FicharioProduto(caminho);
+            if (FP.status)
+            {
+                List<string> List = new List<string>();
+                List = FP.BuscarTodos();
+                if (FP.status)
+                {
+                    List<List<string>> ListaBusca = new List<List<string>>();
+                    for (int i = 0; i <= List.Count - 1; i++)
+                    {
+                        Produto.Unit P = Produto.Desserializar(List[i]);
+                        ListaBusca.Add(new List<string> { P.IdProduto, P.NomeProduto });
+                    }
+                    Frm_BuscaProduto FFormP = new Frm_BuscaProduto(ListaBusca);
+                    FFormP.ShowDialog();
+                    if (FFormP.DialogResult == DialogResult.OK)
+                    {
+                        var idSelect = FFormP.idSelect;
+                        string produtoJson = FP.Buscar(idSelect);
+                        Produto.Unit P = new Produto.Unit();
+                        P = Produto.Desserializar(produtoJson);
+                        EscreverFormulario(P);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ERR: " + FP.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("ERR: " + FP.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

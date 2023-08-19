@@ -75,6 +75,18 @@
     <Compile Include="Formularios\Frm_CadastroProdutos_UC.Designer.cs">
       <DependentUpon>Frm_CadastroProdutos_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_BuscaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BuscaCliente.Designer.cs">
+      <DependentUpon>frm_BuscaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_BuscaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BuscaProduto.Designer.cs">
+      <DependentUpon>Frm_BuscaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frm_CadastroProdutos_UC.resx">
       <DependentUpon>Frm_CadastroProdutos_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BuscaCliente.resx">
+      <DependentUpon>frm_BuscaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BuscaProduto.resx">
+      <DependentUpon>Frm_BuscaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_MenuPrincipal.resx">
       <DependentUpon>Frm_MenuPrincipal.cs</DependentUpon>

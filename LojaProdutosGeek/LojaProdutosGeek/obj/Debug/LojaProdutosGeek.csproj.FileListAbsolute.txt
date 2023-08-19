@@ -40,3 +40,5 @@ C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosG
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.Frm_Questao.resources
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\bin\Debug\Newtonsoft.Json.xml
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.frm_BuscaCliente.resources
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeek\obj\Debug\LojaProdutosGeek.Frm_BuscaProduto.resources

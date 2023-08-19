@@ -339,5 +339,42 @@ namespace LojaProdutosGeek
             Txt_Complemento.Text = "";
             Cmb_Estados.SelectedIndex = -1;
         }
+
+        private void Btn_BuscarCliente_Click(object sender, EventArgs e)
+        {
+            FicharioCliente FC = new FicharioCliente(caminho);
+            if (FC.status)
+            {
+                List<string> List = new List<string>();
+                List = FC.BuscarTodos();
+                if (FC.status)
+                {
+                    List<List<string>> ListaBusca = new List<List<string>>();
+                    for (int i = 0; i <= List.Count - 1; i++)
+                    {
+                        Cliente.Unit C = Cliente.Desserializar(List[i]);
+                        ListaBusca.Add(new List<string> { C.IdCliente, C.NomeCliente });
+                    }
+                    frm_BuscaCliente FFormC = new frm_BuscaCliente(ListaBusca);
+                    FFormC.ShowDialog();
+                    if (FFormC.DialogResult == DialogResult.OK)
+                    {
+                        var idSelect = FFormC.idSelect;
+                        string clienteJson = FC.Buscar(idSelect);
+                        Cliente.Unit C = new Cliente.Unit();
+                        C = Cliente.Desserializar(clienteJson);
+                        EscreverFormulario(C);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ERR: " + FC.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("ERR: " + FC.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

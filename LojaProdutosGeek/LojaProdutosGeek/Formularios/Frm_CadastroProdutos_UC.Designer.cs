@@ -55,6 +55,7 @@
             this.Txt_Quantidade = new System.Windows.Forms.TextBox();
             this.Txt_CodBarra = new System.Windows.Forms.TextBox();
             this.Txt_preco = new System.Windows.Forms.TextBox();
+            this.Btn_BuscarProduto = new System.Windows.Forms.Button();
             this.Grp_Categorias.SuspendLayout();
             this.Tls_Principal_Produtos.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             this.Msk_CodProduto.Name = "Msk_CodProduto";
             this.Msk_CodProduto.Size = new System.Drawing.Size(51, 20);
             this.Msk_CodProduto.TabIndex = 1;
+            this.Msk_CodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Lbl_Garantia
             // 
@@ -180,9 +182,9 @@
             this.Grp_Categorias.Controls.Add(this.Rd_ProdutosGeek);
             this.Grp_Categorias.Controls.Add(this.Rd_Acessorios);
             this.Grp_Categorias.Controls.Add(this.Rd_Jogos);
-            this.Grp_Categorias.Location = new System.Drawing.Point(135, 50);
+            this.Grp_Categorias.Location = new System.Drawing.Point(172, 50);
             this.Grp_Categorias.Name = "Grp_Categorias";
-            this.Grp_Categorias.Size = new System.Drawing.Size(270, 56);
+            this.Grp_Categorias.Size = new System.Drawing.Size(260, 56);
             this.Grp_Categorias.TabIndex = 2;
             this.Grp_Categorias.TabStop = false;
             this.Grp_Categorias.Text = "Categorias";
@@ -308,10 +310,21 @@
             this.Txt_preco.Size = new System.Drawing.Size(49, 20);
             this.Txt_preco.TabIndex = 47;
             // 
+            // Btn_BuscarProduto
+            // 
+            this.Btn_BuscarProduto.Location = new System.Drawing.Point(76, 71);
+            this.Btn_BuscarProduto.Name = "Btn_BuscarProduto";
+            this.Btn_BuscarProduto.Size = new System.Drawing.Size(90, 23);
+            this.Btn_BuscarProduto.TabIndex = 48;
+            this.Btn_BuscarProduto.Text = "Buscar Produto";
+            this.Btn_BuscarProduto.UseVisualStyleBackColor = true;
+            this.Btn_BuscarProduto.Click += new System.EventHandler(this.Btn_BuscarProduto_Click);
+            // 
             // Frm_CadastroProdutos_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Btn_BuscarProduto);
             this.Controls.Add(this.Txt_preco);
             this.Controls.Add(this.Txt_CodBarra);
             this.Controls.Add(this.Txt_Quantidade);
@@ -368,5 +381,6 @@
         private System.Windows.Forms.TextBox Txt_Quantidade;
         private System.Windows.Forms.TextBox Txt_CodBarra;
         private System.Windows.Forms.TextBox Txt_preco;
+        private System.Windows.Forms.Button Btn_BuscarProduto;
     }
 }

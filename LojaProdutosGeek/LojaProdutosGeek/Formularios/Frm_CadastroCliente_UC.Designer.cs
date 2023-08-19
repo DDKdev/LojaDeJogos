@@ -69,6 +69,7 @@
             this.AlterarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.LimparToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ExcluirToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.Btn_BuscarCliente = new System.Windows.Forms.Button();
             this.Grp_Controle.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
@@ -152,7 +153,7 @@
             // 
             // Msk_DtCadastro
             // 
-            this.Msk_DtCadastro.Location = new System.Drawing.Point(138, 43);
+            this.Msk_DtCadastro.Location = new System.Drawing.Point(324, 93);
             this.Msk_DtCadastro.Mask = "00/00/0000";
             this.Msk_DtCadastro.Name = "Msk_DtCadastro";
             this.Msk_DtCadastro.Size = new System.Drawing.Size(67, 20);
@@ -164,7 +165,7 @@
             this.Msk_IdCliente.Location = new System.Drawing.Point(26, 43);
             this.Msk_IdCliente.Mask = "00000";
             this.Msk_IdCliente.Name = "Msk_IdCliente";
-            this.Msk_IdCliente.Size = new System.Drawing.Size(49, 20);
+            this.Msk_IdCliente.Size = new System.Drawing.Size(65, 20);
             this.Msk_IdCliente.TabIndex = 1;
             this.Msk_IdCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -252,7 +253,7 @@
             // Lbl_DtCadastro
             // 
             this.Lbl_DtCadastro.AutoSize = true;
-            this.Lbl_DtCadastro.Location = new System.Drawing.Point(135, 27);
+            this.Lbl_DtCadastro.Location = new System.Drawing.Point(321, 77);
             this.Lbl_DtCadastro.Name = "Lbl_DtCadastro";
             this.Lbl_DtCadastro.Size = new System.Drawing.Size(90, 13);
             this.Lbl_DtCadastro.TabIndex = 30;
@@ -287,13 +288,12 @@
             // 
             // Grp_Controle
             // 
-            this.Grp_Controle.Controls.Add(this.Lbl_DtCadastro);
+            this.Grp_Controle.Controls.Add(this.Btn_BuscarCliente);
             this.Grp_Controle.Controls.Add(this.Lbl_IdCliente);
             this.Grp_Controle.Controls.Add(this.Msk_IdCliente);
-            this.Grp_Controle.Controls.Add(this.Msk_DtCadastro);
             this.Grp_Controle.Location = new System.Drawing.Point(12, 50);
             this.Grp_Controle.Name = "Grp_Controle";
-            this.Grp_Controle.Size = new System.Drawing.Size(239, 79);
+            this.Grp_Controle.Size = new System.Drawing.Size(427, 79);
             this.Grp_Controle.TabIndex = 53;
             this.Grp_Controle.TabStop = false;
             // 
@@ -464,12 +464,24 @@
             this.ExcluirToolStripButton.Text = "toolStripButton2";
             this.ExcluirToolStripButton.Click += new System.EventHandler(this.ExcluirToolStripButton_Click);
             // 
+            // Btn_BuscarCliente
+            // 
+            this.Btn_BuscarCliente.Location = new System.Drawing.Point(97, 41);
+            this.Btn_BuscarCliente.Name = "Btn_BuscarCliente";
+            this.Btn_BuscarCliente.Size = new System.Drawing.Size(96, 23);
+            this.Btn_BuscarCliente.TabIndex = 28;
+            this.Btn_BuscarCliente.Text = "Listar Clientes";
+            this.Btn_BuscarCliente.UseVisualStyleBackColor = true;
+            this.Btn_BuscarCliente.Click += new System.EventHandler(this.Btn_BuscarCliente_Click);
+            // 
             // Frm_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Lbl_DtCadastro);
             this.Controls.Add(this.Tls_Principal_Cliente);
             this.Controls.Add(this.Grp_Endereco);
+            this.Controls.Add(this.Msk_DtCadastro);
             this.Controls.Add(this.Grp_DadosPessoais);
             this.Controls.Add(this.Grp_Controle);
             this.Name = "Frm_CadastroCliente_UC";
@@ -530,5 +542,6 @@
         private System.Windows.Forms.ToolStripButton AlterarToolStripButton;
         private System.Windows.Forms.ToolStripButton LimparToolStripButton;
         private System.Windows.Forms.ToolStripButton ExcluirToolStripButton;
+        private System.Windows.Forms.Button Btn_BuscarCliente;
     }
 }
