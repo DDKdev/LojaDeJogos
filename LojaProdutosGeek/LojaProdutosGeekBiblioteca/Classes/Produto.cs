@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LojaProdutosGeekBiblioteca.DataBases;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -61,6 +62,85 @@ namespace LojaProdutosGeekBiblioteca
                     throw new ValidationException(sbrErrors.ToString());
                 }
             }
+            #region "CRUD Fichario Produto"
+            public void IncluirFichario(string ConexaoCaminho)
+            {
+                string produtoJson = Produto.Serializar(this);
+                FicharioProduto F = new FicharioProduto(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Incluir(this.IdProduto, produtoJson);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public Unit BuscarFichario(string Id, string conexaoCaminho)
+            {
+                FicharioProduto F = new FicharioProduto(conexaoCaminho);
+                if (F.status)
+                {
+                    string produtoJson = F.Buscar(Id);
+                    return Produto.Desserializar(produtoJson);
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+
+            public void AlterarFichario(string ConexaoCaminho)
+            {
+                string produtoJson = Produto.Serializar(this);
+                FicharioProduto F = new FicharioProduto(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Alterar(this.IdProduto, produtoJson);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public void ApagarFichario(string ConexaoCaminho)
+            {
+                FicharioProduto F = new FicharioProduto(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Apagar(this.IdProduto);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public List<string> BuscarTodosFichario(string ConexaoCaminho)
+            {
+                FicharioProduto F = new FicharioProduto(ConexaoCaminho);
+                if (F.status)
+                {
+                    List<string> TodosJson = F.BuscarTodos();
+                    return TodosJson;
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            #endregion
         }
         public class List
         {

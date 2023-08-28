@@ -60,26 +60,19 @@ namespace LojaProdutosGeek
         {
             try
             {
+
                 Produto.Unit P = new Produto.Unit();
                 P = LerFormulario();
                 P.ValidaClasseProduto();
-                string produtoJson = Produto.Serializar(P);
+                P.IncluirFichario(caminho);
+                MessageBox.Show("Produto incluído com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FicharioProduto F = new FicharioProduto(caminho);
-                if (F.status)
-                {
-                    F.Incluir(P.IdProduto, produtoJson);
-                    if (F.status)
-                    {
-                        MessageBox.Show("OK: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Err: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
             }
-            catch(ValidationException Ex)
+            catch (ValidationException Ex)
+            {
+                MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -89,16 +82,27 @@ namespace LojaProdutosGeek
         {
             if (Msk_CodProduto.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do produto vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                FicharioProduto F = new FicharioProduto(caminho);
-                string produtoJson = F.Buscar(Msk_CodProduto.Text);
-
-                Produto.Unit P = new Produto.Unit();
-                P = Produto.Desserializar(produtoJson);
-                EscreverFormulario(P);
+                try
+                {
+                    Produto.Unit P = new Produto.Unit();
+                    P = P.BuscarFichario(Msk_CodProduto.Text, caminho);
+                    if (P == null) //evitar erro de referência mod5
+                    {
+                        MessageBox.Show("Identificador do produto não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        EscreverFormulario(P);
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -106,44 +110,27 @@ namespace LojaProdutosGeek
         {
             if (Msk_CodProduto.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do Produto vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 try
                 {
-
                     Produto.Unit P = new Produto.Unit();
                     P = LerFormulario();
                     P.ValidaClasseProduto();
-                   
-                    string produtoJson = Produto.Serializar(P);
-                    FicharioProduto F = new FicharioProduto(caminho);
-                    if (F.status)
-                    {
-                        F.Alterar(P.IdProduto, produtoJson);
-                        if (F.status)
-                        {
-                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    P.AlterarFichario(caminho);
+                    MessageBox.Show("dados do Produto alterados com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 }
                 catch (ValidationException Ex)
                 {
-                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -155,44 +142,40 @@ namespace LojaProdutosGeek
 
         private void ExcluirToolStripButton_Click(object sender, EventArgs e)
         {
-            if(Msk_CodProduto.Text == "")
+            if (Msk_CodProduto.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do Produto vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                FicharioProduto F = new FicharioProduto("C:\\Users\\dnl_3\\OneDrive\\Documentos\\ProjetosGitHub\\LojaProdutosGeek\\LojaProdutosGeek\\FicharioProduto");
-                if (F.status)
+                try
                 {
-                    string produtoJson = F.Buscar(Msk_CodProduto.Text);
                     Produto.Unit P = new Produto.Unit();
-                    P = Produto.Desserializar(produtoJson);
-                    EscreverFormulario(P);
+                    P = P.BuscarFichario(Msk_CodProduto.Text, caminho);
 
-                    //Frm_questão
-                    
-                    if (MessageBox.Show("Deseja mesmo Excluir?", "geek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (P == null)
                     {
-                        F.Apagar(Msk_CodProduto.Text);
-                        if (F.status)
-                        {
-                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LimparFormulario();
-                        }
-                        else
-                        {
-                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Identificador do produto não encontrado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        EscreverFormulario(P);                     
+                        if ((MessageBox.Show("Deseja mesmo excluir?", "LojaGeek",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes))
+                        {
+                            P.ApagarFichario(caminho);
+                            MessageBox.Show("dados do Produto apagados com sucesso", "byteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparFormulario();
+                        }
                     }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        Produto.Unit LerFormulario()
+            Produto.Unit LerFormulario()
         {
             Produto.Unit P = new Produto.Unit();
             P.IdProduto = Msk_CodProduto.Text;
@@ -277,38 +260,43 @@ namespace LojaProdutosGeek
 
         private void Btn_BuscarProduto_Click(object sender, EventArgs e)
         {
-            FicharioProduto FP = new FicharioProduto(caminho);
-            if (FP.status)
+            try
             {
+                Produto.Unit P = new Produto.Unit();
                 List<string> List = new List<string>();
-                List = FP.BuscarTodos();
-                if (FP.status)
+                List = P.BuscarTodosFichario(caminho);
+                if (List == null)
+                {
+                    MessageBox.Show("Lista Vazia. BD vazio", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     List<List<string>> ListaBusca = new List<List<string>>();
                     for (int i = 0; i <= List.Count - 1; i++)
                     {
-                        Produto.Unit P = Produto.Desserializar(List[i]);
+                        P = Produto.Desserializar(List[i]);
                         ListaBusca.Add(new List<string> { P.IdProduto, P.NomeProduto });
                     }
-                    Frm_BuscaProduto FFormP = new Frm_BuscaProduto(ListaBusca);
-                    FFormP.ShowDialog();
-                    if (FFormP.DialogResult == DialogResult.OK)
+                    Frm_BuscaProduto FForm = new Frm_BuscaProduto(ListaBusca);
+                    FForm.ShowDialog();
+                    if (FForm.DialogResult == DialogResult.OK)
                     {
-                        var idSelect = FFormP.idSelect;
-                        string produtoJson = FP.Buscar(idSelect);
-                        Produto.Unit P = new Produto.Unit();
-                        P = Produto.Desserializar(produtoJson);
-                        EscreverFormulario(P);
+                        var idSelect = FForm.idSelect;
+                        P = P.BuscarFichario(idSelect, caminho);
+                        if (P == null)
+                        {
+                            MessageBox.Show("identificador do produto não encontrado", "Loja Geek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            EscreverFormulario(P);
+                        }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("ERR: " + FP.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            else
+            catch (Exception Ex)
             {
-                MessageBox.Show("ERR: " + FP.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

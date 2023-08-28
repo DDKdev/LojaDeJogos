@@ -62,35 +62,21 @@ namespace LojaProdutosGeek
         {
             try
             {
+
                 Cliente.Unit C = new Cliente.Unit();
                 C = LerFormulario();
-                C.ValidaCPF();
                 C.ValidaClasseCliente();
+                C.IncluirFichario(caminho);
+                MessageBox.Show("Cliente incluído com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                string clienteJson = Cliente.Serializar(C);
-
-                FicharioCliente F = new FicharioCliente(caminho);
-                if (F.status)
-                {
-                    F.Incluir(C.IdCliente, clienteJson);
-                    if (F.status)
-                    {
-                        MessageBox.Show("OK: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Err: " + F.mensagem, "ProjetoGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
             }
-            catch(ValidationException Ex)
+            catch (ValidationException Ex)
             {
                 MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
@@ -98,16 +84,27 @@ namespace LojaProdutosGeek
         {
             if (Msk_IdCliente.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do Cliente vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                FicharioCliente F = new FicharioCliente(caminho);
-                string clienteJson = F.Buscar(Msk_IdCliente.Text);
-
-                Cliente.Unit C = new Cliente.Unit();
-                C = Cliente.Desserializar(clienteJson);
-                EscreverFormulario(C);
+                try
+                {
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = C.BuscarFichario(Msk_IdCliente.Text, caminho);
+                    if (C == null) //evitar erro de referência mod5
+                    {
+                        MessageBox.Show("Identificador não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        EscreverFormulario(C);
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
@@ -116,44 +113,25 @@ namespace LojaProdutosGeek
         {
             if (Msk_IdCliente.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do Cliente vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 try
                 {
-
                     Cliente.Unit C = new Cliente.Unit();
                     C = LerFormulario();
                     C.ValidaClasseCliente();
-                    C.ValidaCPF();
-                    string clienteJson = Cliente.Serializar(C);
-                    FicharioCliente F = new FicharioCliente(caminho);
-                    if (F.status)
-                    {
-                        F.Alterar(C.IdCliente, clienteJson);
-                        if (F.status)
-                        {
-                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
+                    C.AlterarFichario(caminho);
+                    MessageBox.Show("dados do Cliente alterados com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (ValidationException Ex)
                 {
-                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Ex.Message, "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -168,38 +146,35 @@ namespace LojaProdutosGeek
         {
             if (Msk_IdCliente.Text == "")
             {
-                MessageBox.Show("O campo Id não pdoe estar vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Código do Cliente vazio.", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                FicharioCliente F = new FicharioCliente(caminho);
-                if (F.status)
+                try
                 {
-                    string clienteJson = F.Buscar(Msk_IdCliente.Text);
                     Cliente.Unit C = new Cliente.Unit();
-                    C = Cliente.Desserializar(clienteJson);
-                    EscreverFormulario(C);
+                    C = C.BuscarFichario(Msk_IdCliente.Text, caminho);
 
-                    //Frm_Questao Db = new Frm_Questao("icons8_question_mark_961", "Deseja realmente excluir?");
-                    //Db.ShowDialog();
-                    //if (Db.DialogResult == DialogResult.Yes)
-                    if (MessageBox.Show("Deseja mesmo Excluir?", "geek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (C == null)
                     {
-                        F.Apagar(Msk_IdCliente.Text);
-                        if (F.status)
-                        {
-                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LimparFormulario();
-                        }
-                        else
-                        {
-                            MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Identificador não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("ERR: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        EscreverFormulario(C);
+                        //Frm_Questao Db = new Frm_Questao("icons8_question_mark_961", "Você quer excluir o cliente?");
+                        //Db.ShowDialog();
+                        if ((MessageBox.Show("Deseja mesmo excluir?", "LojaGeek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                        {
+                            C.ApagarFichario(caminho);
+                            MessageBox.Show("dados do Cliente apagados com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparFormulario();
+                        }
                     }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -219,7 +194,7 @@ namespace LojaProdutosGeek
             C.Complemento = Txt_Complemento.Text;
             C.Bairro = Txt_Bairro.Text;
             C.Cidade = Txt_Cidade.Text;
-            
+
             if (Rd_masculino.Checked)
             {
                 C.Genero = 0;
@@ -252,7 +227,7 @@ namespace LojaProdutosGeek
             vCep = vCep.Replace("-", "");
             if (vCep != "")
             {
-                if(Msk_Cep.Text.Length >= 8)
+                if (Msk_Cep.Text.Length >= 8)
                 {
                     var vJson = Cls_Uteis.GeraJSONCEP(vCep);
                     Cep.Unit CEP = new Cep.Unit();
@@ -289,20 +264,20 @@ namespace LojaProdutosGeek
             Txt_Complemento.Text = C.Complemento;
             Txt_Bairro.Text = C.Bairro;
             Txt_Cidade.Text = C.Cidade;
-            
+
             if (C.Genero == 1)
             {
                 Rd_masculino.Checked = true;
             }
             if (C.Genero == 2)
             {
-               Rd_Feminino.Checked = true;
+                Rd_Feminino.Checked = true;
             }
             if (C.Genero == 3)
             {
                 Rd_Indefinido.Checked = true;
             }
-            
+
             if (C.Estado == "")
             {
                 Cmb_Estados.SelectedIndex = -1;
@@ -342,38 +317,43 @@ namespace LojaProdutosGeek
 
         private void Btn_BuscarCliente_Click(object sender, EventArgs e)
         {
-            FicharioCliente FC = new FicharioCliente(caminho);
-            if (FC.status)
+            try
             {
+                Cliente.Unit C = new Cliente.Unit();
                 List<string> List = new List<string>();
-                List = FC.BuscarTodos();
-                if (FC.status)
+                List = C.BuscarTodosFichario(caminho);
+                if (List == null)
+                {
+                    MessageBox.Show("Lista Vazia. BD vazio", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     List<List<string>> ListaBusca = new List<List<string>>();
                     for (int i = 0; i <= List.Count - 1; i++)
                     {
-                        Cliente.Unit C = Cliente.Desserializar(List[i]);
+                        C = Cliente.Desserializar(List[i]);
                         ListaBusca.Add(new List<string> { C.IdCliente, C.NomeCliente });
                     }
-                    frm_BuscaCliente FFormC = new frm_BuscaCliente(ListaBusca);
-                    FFormC.ShowDialog();
-                    if (FFormC.DialogResult == DialogResult.OK)
+                    frm_BuscaCliente FForm = new frm_BuscaCliente(ListaBusca);
+                    FForm.ShowDialog();
+                    if (FForm.DialogResult == DialogResult.OK)
                     {
-                        var idSelect = FFormC.idSelect;
-                        string clienteJson = FC.Buscar(idSelect);
-                        Cliente.Unit C = new Cliente.Unit();
-                        C = Cliente.Desserializar(clienteJson);
-                        EscreverFormulario(C);
+                        var idSelect = FForm.idSelect;
+                        C = C.BuscarFichario(idSelect, caminho);
+                        if (C == null)
+                        {
+                            MessageBox.Show("identificadro não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            EscreverFormulario(C);
+                        }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("ERR: " + FC.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            else
+            catch (Exception Ex)
             {
-                MessageBox.Show("ERR: " + FC.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
