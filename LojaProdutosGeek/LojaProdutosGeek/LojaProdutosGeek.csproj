@@ -51,6 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FicharioClienteDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FicharioClienteDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +149,17 @@
     <EmbeddedResource Include="Formularios\Frm_CadastroCliente_UC.resx">
       <DependentUpon>Frm_CadastroCliente_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="FicharioClienteDataSet.xsc">
+      <DependentUpon>FicharioClienteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FicharioClienteDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FicharioClienteDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FicharioClienteDataSet.xss">
+      <DependentUpon>FicharioClienteDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

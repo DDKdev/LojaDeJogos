@@ -1,4 +1,6 @@
+- aplicar localDB em produtos
+- corrigir o métod apagar que recebe a tabela...
+
 
 - adaptar o formulário  com uso de checkbox, radiobuttons, combobox, group box.
-- curso 78
 - olhar para ver o que melhorar

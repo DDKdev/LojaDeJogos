@@ -7,3 +7,5 @@ C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosG
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\obj\Debug\LojaProdutosGeekBiblioteca.csproj.CopyComplete
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\FicharioCliente.mdf
+C:\Users\dnl_3\OneDrive\Documentos\ProjetosGitHub\LojaProdutosGeek\LojaProdutosGeek\LojaProdutosGeekBiblioteca\bin\Debug\FicharioCliente_log.ldf

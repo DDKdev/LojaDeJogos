@@ -180,6 +180,87 @@ namespace LojaProdutosGeekBiblioteca
             }
 
             #endregion
+
+            #region "CRUD LocalDB"
+            public void IncluirFicharioDB(string ConexaoCaminho)
+            {
+                string clienteJson = Cliente.Serializar(this);
+                FicharioDBCliente F = new FicharioDBCliente(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Incluir(this.IdCliente, clienteJson);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public Unit BuscarFicharioDB(string Id, string conexaoCaminho)
+            {
+                FicharioDBCliente F = new FicharioDBCliente(conexaoCaminho);
+                if (F.status)
+                {
+                    string clienteJson = F.Buscar(Id);
+                    return Cliente.Desserializar(clienteJson);
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+
+            public void AlterarFicharioDB(string ConexaoCaminho)
+            {
+                string clienteJson = Cliente.Serializar(this);
+                FicharioDBCliente F = new FicharioDBCliente(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Alterar(this.IdCliente, clienteJson);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public void ApagarFicharioDB(string ConexaoCaminho)
+            {
+                FicharioDBCliente F = new FicharioDBCliente(ConexaoCaminho);
+                if (F.status)
+                {
+                    F.Apagar(this.IdCliente);
+                    if (!(F.status))
+                    {
+                        throw new Exception(F.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+            public List<string> BuscarTodosFicharioDB(string ConexaoCaminho)
+            {
+                FicharioDBCliente F = new FicharioDBCliente(ConexaoCaminho);
+                if (F.status)
+                {
+                    List<string> TodosJson = F.BuscarTodos();
+                    return TodosJson;
+                }
+                else
+                {
+                    throw new Exception(F.mensagem);
+                }
+            }
+
+            #endregion
         }
 
         public class List

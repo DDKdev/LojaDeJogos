@@ -66,7 +66,7 @@ namespace LojaProdutosGeek
                 Cliente.Unit C = new Cliente.Unit();
                 C = LerFormulario();
                 C.ValidaClasseCliente();
-                C.IncluirFichario(caminho);
+                C.IncluirFicharioDB("Cliente");
                 MessageBox.Show("Cliente incluído com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -91,7 +91,7 @@ namespace LojaProdutosGeek
                 try
                 {
                     Cliente.Unit C = new Cliente.Unit();
-                    C = C.BuscarFichario(Msk_IdCliente.Text, caminho);
+                    C = C.BuscarFicharioDB(Msk_IdCliente.Text, "Cliente");
                     if (C == null) //evitar erro de referência mod5
                     {
                         MessageBox.Show("Identificador não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,7 +122,7 @@ namespace LojaProdutosGeek
                     Cliente.Unit C = new Cliente.Unit();
                     C = LerFormulario();
                     C.ValidaClasseCliente();
-                    C.AlterarFichario(caminho);
+                    C.AlterarFicharioDB("Cliente");
                     MessageBox.Show("dados do Cliente alterados com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (ValidationException Ex)
@@ -153,7 +153,7 @@ namespace LojaProdutosGeek
                 try
                 {
                     Cliente.Unit C = new Cliente.Unit();
-                    C = C.BuscarFichario(Msk_IdCliente.Text, caminho);
+                    C = C.BuscarFicharioDB(Msk_IdCliente.Text, "Cliente");
 
                     if (C == null)
                     {
@@ -166,7 +166,7 @@ namespace LojaProdutosGeek
                         //Db.ShowDialog();
                         if ((MessageBox.Show("Deseja mesmo excluir?", "LojaGeek", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                         {
-                            C.ApagarFichario(caminho);
+                            C.ApagarFicharioDB("Cliente");
                             MessageBox.Show("dados do Cliente apagados com sucesso", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimparFormulario();
                         }
@@ -321,7 +321,7 @@ namespace LojaProdutosGeek
             {
                 Cliente.Unit C = new Cliente.Unit();
                 List<string> List = new List<string>();
-                List = C.BuscarTodosFichario(caminho);
+                List = C.BuscarTodosFicharioDB("Cliente");
                 if (List == null)
                 {
                     MessageBox.Show("Lista Vazia. BD vazio", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -339,7 +339,7 @@ namespace LojaProdutosGeek
                     if (FForm.DialogResult == DialogResult.OK)
                     {
                         var idSelect = FForm.idSelect;
-                        C = C.BuscarFichario(idSelect, caminho);
+                        C = C.BuscarFicharioDB(idSelect, "Cliente");
                         if (C == null)
                         {
                             MessageBox.Show("identificadro não encontrado", "LojaGeek", MessageBoxButtons.OK, MessageBoxIcon.Error);
